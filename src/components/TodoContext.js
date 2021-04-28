@@ -1,4 +1,7 @@
 import React, { createContext, useReducer, useContext, useRef } from 'react';
+
+// 상태 관리하는 컴포넌트
+
 const initialTodos = [
   {
     id: 1,
@@ -50,7 +53,9 @@ export function TodoProvider({ children }) {
     // value 를 설정해주면 됩니다. 그리고, props 로 받아온 children 값을 내부에 렌더링해주세요.
     <TodoStateContext.Provider value={state}>
       <TodoDispatchContext.Provider value={dispatch}>
-        {children}
+        <TodoNextIdContext.Provider value={nextId}>
+          {children}
+        </TodoNextIdContext.Provider>
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
